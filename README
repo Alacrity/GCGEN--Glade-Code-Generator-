@@ -1,0 +1,27 @@
+This Package is called the Glade Code Generator(GCGEN) 
+This Package is A part of Alacrity Organization.
+Please Read The Copiying.txt before you install.
+
+Requirements
+
+1.Python >=2.5
+
+Installation Directions
+-----------------------------------
+just say "python install.py" as a root user	
+-----------------------------------
+Running Instructions
+
+Glade File must be in LigGlade Format
+
+Run by typing
+----------------------------------------------
+gcgen [glade filename.glade] [codefilename.py]
+----------------------------------------------
+
+Contact 
+-----------------------
+neshmailsu@gmail.com 
+for futher details
+thank you for using GcGen
+-------------------------
