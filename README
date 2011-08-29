@@ -1,19 +1,14 @@
-This Package is called the Glade Code Generator(GCGEN)
+This Package is called the Glade Code Generator(GCGEN) 
+This Package is A part of Alacrity Organization.
 Please Read The Copiying.txt before you install.
 
 Requirements
 
 1.Python >=2.5
-2.PyXML >= 0.8.4
 
-if you donot have the PyXML .. it is packaged with GcGen. just untar it and install it by saying 
---------------------------
-"python setup.py install" 
---------------------------
 Installation Directions
 -----------------------------------
-login as root (sudo su | su [i always recommend sudo]) and  
-just say "python install.py"	   	
+just say "python install.py" as a root user	
 -----------------------------------
 Running Instructions
 
