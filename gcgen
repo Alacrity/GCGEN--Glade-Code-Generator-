@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+
+#    Copyright@2010 Ganesh.Katrapati
+#    This file is part of Glade Code Generator.
+#    Glade Code Generator is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+
+#    Glade Code Generator is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with Glade Code Generator.  If not, see <http://www.gnu.org/licenses/>.
+import sys
+gladename = sys.argv[1]
+filename = sys.argv[2]
+dotpoint = gladename.find('.')
+classname = gladename[0:dotpoint]
+file = open(filename,'w')
+dfile = open('/usr/local/sbin/gcdeflines.gg')
+defaultlines = dfile.readlines()
+data = ""
+for d in defaultlines:
+	data += d
+data += "\nclass "+classname+":\n"
+data += "\twTree = None\n"
+sys.path.append('/usr/local/sbin/')
+from gcxmlreader import *
+list = getSignals(gladename)
+data += "\n\t#Constructor Definition\n\tdef __init__( self ):\n\t\tself.wTree = gtk.glade.XML('"+gladename+"')"
+widgets = getWids(gladename)
+wlist = "\n\t\t#<Widget Variables-Please Donot Edit\n"
+for w in widgets:
+	wlist += "\t\tself."+w + " = self.wTree.get_widget(\'"+w+"\')\n"
+data+=wlist+"\t\t#Widget Variables Please Donot Edit>#"
+dic = "{\n\t\t\t#<Signals -- Please Donot Edit\n"
+names = []
+for l in list:
+	firstus = l.find('_')
+	funname = l[firstus:]
+	dic += "\""+l+"\" : self."+funname+",\n\t\t\t"
+	names.append(funname)
+dic = dic[0:-5]
+dic+="\n#Signals -- Please Donot Edit>#\n\t\t}"
+data += "\n\t\tdic = " + dic 
+data += "\n\t\tself.wTree.signal_autoconnect( dic )"
+data += "\n\t\tgtk.main()"
+
+methods = "\n\n\t#Event Handlers"
+for n in names:
+	methods += "\n\tdef "+n+"(self,widget):"
+	methods += "\n\t\t\tpass"
+data += methods
+data += "\nfinalvariable = "+classname+"()"
+#print data
+file.writelines(data)
+
+
+
+

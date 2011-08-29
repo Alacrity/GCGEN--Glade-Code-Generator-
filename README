@@ -1,0 +1,32 @@
+This Package is called the Glade Code Generator(GCGEN)
+Please Read The Copiying.txt before you install.
+
+Requirements
+
+1.Python >=2.5
+2.PyXML >= 0.8.4
+
+if you donot have the PyXML .. it is packaged with GcGen. just untar it and install it by saying 
+--------------------------
+"python setup.py install" 
+--------------------------
+Installation Directions
+-----------------------------------
+login as root (sudo su | su [i always recommend sudo]) and  
+just say "python install.py"	   	
+-----------------------------------
+Running Instructions
+
+Glade File must be in LigGlade Format
+
+Run by typing
+----------------------------------------------
+gcgen [glade filename.glade] [codefilename.py]
+----------------------------------------------
+
+Contact 
+-----------------------
+neshmailsu@gmail.com 
+for futher details
+thank you for using GcGen
+-------------------------
